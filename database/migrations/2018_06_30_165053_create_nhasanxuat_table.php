@@ -15,7 +15,11 @@ class CreateNhasanxuatTable extends Migration
     {
         Schema::create('nhasanxuat', function (Blueprint $table) {
             $table->increments('id_nhasanxuat');
-            $table->string('tensx');
+            $table->string('ten_nhasanxuat');
+            $table->string('email_nhasanxuat');
+            $table->string('diachi_nhasanxuat');
+            $table->string('dienthoai_nhasanxuat');
+            $table->boolean('trangthai_nhasanxuat')->default(true);
             $table->timestamps();
         });
     }

@@ -23,6 +23,7 @@ class CreateSanphamTable extends Migration
             $table->string('xuatxu');
             $table->integer('loai')->unsigned();
             $table->integer('nhasanxuat')->unsigned();
+            $table->boolean('trangthai_sanpham')->default(true);
             $table->foreign('loai')->references('id_loai')->on('loai');
             $table->foreign('nhasanxuat')->references('id_nhasanxuat')->on('nhasanxuat');
             $table->timestamps();

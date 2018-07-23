@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layout_user')
 
 @section('title', 'Đăng nhập')
 @section('content')
