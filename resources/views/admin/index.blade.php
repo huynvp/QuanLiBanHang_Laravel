@@ -14,7 +14,7 @@
 					<p><strong>Tổng số sản phẩm: </strong></p>
 					<p><strong>Số sản phẩm đã xóa: </strong></p>
 					<p><strong>Sản phẩm thêm gần đây:</strong> Sam sung galaxy s11</p>
-					<a href="{{ route('indexSanPham') }}" class="btn btn-secondary">Quản lí sản phẩm</a>
+					<a href="{{ route('indexAdminSanPham') }}" class="btn btn-secondary">Quản lí sản phẩm</a>
 				</div>
 			</div>
 		</div>
@@ -51,7 +51,7 @@
 					<p><strong>Tổng số nhà sản xuất: </strong></p>
 					<p><strong>Các nhà sản xuất đã xóa: </strong></p>
 					<p><strong>Nhà sản xuất thêm gần đây</strong></p>
-					<a href="" class="btn btn-secondary">Quản lí nhà sản xuất</a>
+					<a href="{{ route('indexAdminNhaSanXuat') }}" class="btn btn-secondary">Quản lí nhà sản xuất</a>
 				</div>
 			</div>
 		</div>

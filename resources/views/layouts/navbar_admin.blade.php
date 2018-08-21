@@ -9,18 +9,17 @@
 			<ul class="navbar-nav mr-auto">
 				@if(Auth::guard('admin')->check())
 					<li class="nav-item" id="nav-product">
-						<a class="nav-link" href="{{ route('indexSanPham') }}">Quản lí sản phẩm</a>
+						<a class="nav-link" href="{{ route('indexAdminSanPham') }}">Quản lí sản phẩm</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Quản lí danh mục</a>
+						<a class="nav-link" href="{{ route('indexAdminLoai') }}">Quản lí loại</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Quản lí loại</a>
+						<a class="nav-link" href="{{ route('indexAdminNhaSanXuat') }}">Quản lí nhà sản xuất</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Quản lí nhà sản xuất</a>
+						<a class="nav-link" href="{{ route('indexAdminDonHang') }}">Quản lí đơn hàng</a>
 					</li>
-				
 				@endif
 			</ul>
 			<ul class="navbar-nav navbar-toggler-right ml-auto">

@@ -36,7 +36,6 @@ Route::post('/changePassword', 'UserController@postchangePassword')
 
 
 //admin
-
 Route::prefix('admin')->group(function(){
 	Route::get('login', 'Admin\AdminController@getLogin')
 		->name('getLoginAdmin');
@@ -50,30 +49,54 @@ Route::prefix('admin')->group(function(){
 
 	Route::middleware('checkadmin')->prefix('sanpham')->group(function() {
 		Route::get('', 'Admin\SanPhamAdminController@getAll')
-			->name('indexSanPham');
+			->name('indexAdminSanPham');
 		Route::get('insert', 'Admin\SanPhamAdminController@getInsert')
-			->name('getInsertSanPham');
+			->name('getAdminInsertSanPham');
 		Route::get('update/{id}', 'Admin\SanPhamAdminController@getUpdate')
-			->name('getUpdateSanPham');
+			->name('getAdminUpdateSanPham');
 		Route::get('detail/{id}', 'Admin\SanPhamAdminController@getDetail')
-			->name('detailSanPham');
-		Route::post('insert', 'Admin\SanPhamAdminController@postInsert')
-			->name('postInsertSanPham');
-		Route::post('update', 'Admin\SanPhamAdminController@postUpdate')
-			->name('postUpdateSanPham');
-		Route::post('delete', 'Admin\SanPhamAdminController@delete')
-		->name('deleteSanPham');
+			->name('detailAdminSanPham');
+		
+			Route::post('insert', 'Admin\SanPhamAdminController@postInsert')
+			->name('postAdminInsertSanPham');
+		
+		Route::put('update', 'Admin\SanPhamAdminController@postUpdate')
+			->name('postAdminUpdateSanPham');
+		
+		Route::delete('delete', 'Admin\SanPhamAdminController@delete')
+			->name('deleteAdminSanPham');
 	});
 
 	Route::middleware('checkadmin')->prefix('nhasanxuat')->group(function() {
+		Route::get('', 'Admin\NhaSanXuatAdminController@index')
+			->name('indexAdminNhaSanXuat');
+		Route::get('getAll', 'Admin\NhaSanXuatAdminController@getall')
+			->name('getAllAdminNhaSanXuat');
+		Route::get('getOnce', 'Admin\NhaSanXuatAdminController@getonce')
+			->name('getOnceAdminNhaSanXuat');
+		Route::get('search', 'Admin\NhaSanXuatAdminController@search')
+			->name('searchAdminNhaSanXuat');
 
+		Route::post('insert', 'Admin\NhaSanXuatAdminController@postInsert') 
+			->name('postAdminInsertNhaSanXuat');
+		Route::put('update', 'Admin\NhaSanXuatAdminController@postUpdate')
+			->name('updateAdminNhaSanXuat');
+		Route::delete('delete', 'Admin\NhaSanXuatAdminController@delete')
+			->name('deleteAdminNhaSanXuat');
 	});
 
 	Route::middleware('checkadmin')->prefix('loai')->group(function() {
+		Route::get('', 'Admin\LoaiAdminController@index')
+			->name('indexAdminLoai');
+		Route::get('/getAll', 'Admin\LoaiAdminController@getall')
+			->name('getAllAdminLoai');
 
+		Route::post('/insert', 'Admin\LoaiAdminController@add')
+			->name('potsAddAdminLoai');
 	});
 
 	Route::middleware('checkadmin')->prefix('donhang')->group(function() {
-
+		Route::get('', 'Admin\DonHangAdminController@index')
+			->name('indexAdminDonHang');
 	});
 });

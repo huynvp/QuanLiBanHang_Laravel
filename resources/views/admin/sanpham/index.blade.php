@@ -5,7 +5,7 @@
 @section('content')
 	<div class="container">
 		<h3>Quản lí sản phẩm</h3>
-		<a href="{{ route('getInsertSanPham') }}" class="btn btn-warning btn-sm">Thêm sản phẩm mới</a>
+		<a href="{{ route('getAdminInsertSanPham') }}" class="btn btn-warning btn-sm">Thêm sản phẩm mới</a>
 		<table class="table table-bordered table-responsive table-hover table-striped">
 			<thead class="bg-dark text-white">
 				<th>Số thứ tự</th>
@@ -26,8 +26,8 @@
 					<td>{{ $value['luotban'] }}</td>
 					<td>{{ $value['tenloai'] }}</td>
 					<td>{{ $value['tensx'] }}</td>
-					<td><a href="{{ route('detailSanPham', ['id' => $value['id_sanpham']]) }}">Xem chi tiết</a></td>
-					<td><a href="{{ route('getUpdateSanPham', ['id' => $value['id_sanpham']]) }}">Cập nhật sản phẩm</a></td>
+					<td><a href="{{ route('detailAdminSanPham', ['id' => $value['id_sanpham']]) }}">Xem chi tiết</a></td>
+					<td><a href="{{ route('getAdminUpdateSanPham', ['id' => $value['id_sanpham']]) }}">Cập nhật sản phẩm</a></td>
 				</tr>
 			@endforeach
 		</table>

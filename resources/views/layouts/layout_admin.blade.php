@@ -7,12 +7,6 @@
 
 	<title> @yield('title') - Quản trị </title>
 
-	<!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-	<script>
-		@yield('script')
-	</script>
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -21,5 +15,9 @@
 	<main class="py-4">
 		@yield('content')
 	</main>
+	<!-- Scripts -->
+	<script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+	@yield('script')
 </body>
 </html>

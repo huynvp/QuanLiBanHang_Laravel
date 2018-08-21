@@ -7,7 +7,7 @@
 	<div class="row justify-content-center">
 		<div class="col-6">
 			<div class="card">
-				<div class="card-header">{{ _('Đăng nhập quản trị viên') }} </div>
+				<div class="card-header">{{ _('Đăng nhập quản trị viên') }}</div>
 				<div class="card-body">
 				<form action="{{ route('postLoginAdmin') }}" method="post">
 					@csrf
