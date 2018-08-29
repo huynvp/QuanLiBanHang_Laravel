@@ -5,7 +5,7 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-12">
-			<form action="{{ route('postInsertSanPham') }}" enctype="multipart/form-data" method="POST">
+			<form action="{{ route('postAdminInsertSanPham') }}" enctype="multipart/form-data" method="POST">
 				@csrf
 				<legend>{{ __('Thêm sản phẩm')}}</legend>
 			
@@ -41,29 +41,30 @@
 					</div>
 					<div class="col-4">
 						<label for="categories">{{ __('Loại')}}</label>
-						<select class="form-control" name="categories" id="categories">
-							<option value="1">Loại 1</option>
-							<option value="1">Loại 1</option>
-							<option value="1">Loại 1</option>
-							<option value="1">Loại 1</option>
-							<option value="1">Loại 1</option>
+						<select class="form-control" data-show-subtext="true" data-live-search="true" name="categories" id="categories">
+							@for($i = 0; $i < count($loai); $i++)
+								<option value="{{ $loai[$i]->id_loai }}">{{ $loai[$i]->tenloai }}</option>
+							@endfor
 						</select>
 					</div>
 					<div class="col-4">
 						<label for="producer">{{ __('Nhà sản xuất')}}</label>
 						<select class="form-control" name="producer" id="producer">
-							<option value="1">Loại 1</option>
-							<option value="1">Loại 1</option>
-							<option value="1">Loại 1</option>
-							<option value="1">Loại 1</option>
-							<option value="1">Loại 1</option>
+							@for($i = 0; $i < count($nsx); $i++)
+								<option value="{{ $nsx[$i]->id_nhasanxuat }}">{{ $nsx[$i]->ten_nhasanxuat }}</option>
+							@endfor
 						</select>
 					</div>
 				</div>
 				<div class="form-group row">
 					<div class="col-12">
 						<label for="descript">{{ __('Mô tả sản phẩm') }}</label>
-						<textarea name="descript" id="descript"></textarea>
+						<textarea name="descript" id="descript">{{ old('descript') }}</textarea>
+						@if($errors->has('descript'))
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $errors->first('descript') }} </strong>
+							</span>
+						@endif
 					</div>
 				</div>
 				<div class="form-group row">

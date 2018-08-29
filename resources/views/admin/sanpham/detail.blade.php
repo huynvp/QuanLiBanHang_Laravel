@@ -5,7 +5,7 @@
 	<h3>Chi tiết sản phẩm</h3>
 	<div class="row">
 		<div class="col-6">
-			<img class="img-fluid" src="{{ asset('image/product/image2.png') }}" alt="">
+			<img class="img-fluid" src="{{ asset('image/product/image'. $product[0]['id_sanpham'] .'.png') }}" alt="">
 			<div class="container-fuild">
 				<hr>
 				<h5>Mô tả sản phẩm: </h5>
@@ -39,10 +39,14 @@
 				<li class="list-group-item">
 					<div class="row">
 						<div class="col">
-							<button class="btn btn-success btn-block">Chỉnh sửa sản phẩm</button>
+							<button class="btn btn-success btn-block">{{ __('Chỉnh sửa sản phẩm') }}</button>
 						</div>
 						<div class="col">
-							<button class="btn btn-danger btn-block">Xóa sản phẩm</button>
+							<form action="{{ route('deleteAdminSanPham') }}" method="post">
+								@csrf
+								<input type="hidden" name="sp" value="{{ $product[0]['id_sanpham'] }}">
+								<input type="submit" class="btn btn-danger btn-block" onclick="return confirm('Bạn có muốn xóa sản phẩm này?')"{{ __('Xóa sản phẩm') }} />
+							</form>
 						</div>
 					</div>
 				</li>

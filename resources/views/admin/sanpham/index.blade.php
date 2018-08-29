@@ -25,7 +25,7 @@
 					<td>{{ $value['giaban'] }} vnd </td>
 					<td>{{ $value['luotban'] }}</td>
 					<td>{{ $value['tenloai'] }}</td>
-					<td>{{ $value['tensx'] }}</td>
+					<td>{{ $value['ten_nhasanxuat'] }}</td>
 					<td><a href="{{ route('detailAdminSanPham', ['id' => $value['id_sanpham']]) }}">Xem chi tiết</a></td>
 					<td><a href="{{ route('getAdminUpdateSanPham', ['id' => $value['id_sanpham']]) }}">Cập nhật sản phẩm</a></td>
 				</tr>

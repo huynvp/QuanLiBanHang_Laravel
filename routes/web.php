@@ -47,6 +47,7 @@ Route::prefix('admin')->group(function(){
 	Route::get('/', 'Admin\AdminController@getIndex')
 		->name('getIndexAdmin')->middleware('checkadmin');
 
+	//sanpham
 	Route::middleware('checkadmin')->prefix('sanpham')->group(function() {
 		Route::get('', 'Admin\SanPhamAdminController@getAll')
 			->name('indexAdminSanPham');
@@ -57,16 +58,15 @@ Route::prefix('admin')->group(function(){
 		Route::get('detail/{id}', 'Admin\SanPhamAdminController@getDetail')
 			->name('detailAdminSanPham');
 		
-			Route::post('insert', 'Admin\SanPhamAdminController@postInsert')
+		Route::post('insert', 'Admin\SanPhamAdminController@postInsert')
 			->name('postAdminInsertSanPham');
-		
-		Route::put('update', 'Admin\SanPhamAdminController@postUpdate')
+		Route::post('update', 'Admin\SanPhamAdminController@postUpdate')
 			->name('postAdminUpdateSanPham');
-		
-		Route::delete('delete', 'Admin\SanPhamAdminController@delete')
+		Route::post('delete', 'Admin\SanPhamAdminController@delete')
 			->name('deleteAdminSanPham');
 	});
 
+	//nhasanxuat
 	Route::middleware('checkadmin')->prefix('nhasanxuat')->group(function() {
 		Route::get('', 'Admin\NhaSanXuatAdminController@index')
 			->name('indexAdminNhaSanXuat');
@@ -90,9 +90,15 @@ Route::prefix('admin')->group(function(){
 			->name('indexAdminLoai');
 		Route::get('/getAll', 'Admin\LoaiAdminController@getall')
 			->name('getAllAdminLoai');
+		Route::get('/load', 'Admin\LoaiAdminController@getonce')
+			->name('getOnceAdminLoai');
 
 		Route::post('/insert', 'Admin\LoaiAdminController@add')
-			->name('potsAddAdminLoai');
+			->name('addAdminLoai');
+		Route::put('/update', 'Admin\LoaiAdminController@update')
+			->name('updateAdminLoai');
+		Route::delete('delete', 'Admin\LoaiAdminController@delete')
+			->name('deleteAdminLoai');
 	});
 
 	Route::middleware('checkadmin')->prefix('donhang')->group(function() {

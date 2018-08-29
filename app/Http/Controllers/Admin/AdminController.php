@@ -12,6 +12,12 @@ use Illuminate\Http\Request;
 use App\Admin;
 use Validator;
 
+use App\NhaSanXuat;
+use App\Loai;
+use App\DonHang;
+use App\SanPham;
+
+
 
 class AdminController extends Controller
 {
@@ -26,7 +32,22 @@ class AdminController extends Controller
 	}
 
 	public function getIndex() {
-		return view('admin.index');
+
+		$nsx = array();
+		$loai = array();
+		$sp = array();
+
+		$loai['sum'] = Loai::where('trangthai_loai', 1)->count();
+		$loai['del'] = Loai::where('trangthai_loai', 0)->count();
+		$id_max = Loai::where('trangthai_loai', 1)->max('id_loai');
+		$loai['last'] = Loai::find($id_max)->tenloai;
+
+		$nsx['sum'] = NhaSanXuat::where('trangthai_nhasanxuat', 1)->count();
+		$nsx['del'] = NhaSanXuat::where('trangthai_nhasanxuat', 0)->count();
+		$id_max = NhaSanXuat::where('trangthai_nhasanxuat', 1)->max('id_nhasanxuat');
+		$nsx['last'] = NhaSanXuat::find($id_max)->ten_nhasanxuat;
+
+		return view('admin.index', ['nhasanxuat' => $nsx, 'loai' => $loai, 'sanpham' => $sp]);
 	}
 
 	//post controller

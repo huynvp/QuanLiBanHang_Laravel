@@ -29,7 +29,7 @@ class NhaSanXuatAdminController extends Controller
     	return view('admin.nhasanxuat.index');
     }
     function getAll() {
-    	$nsx = NhaSanXuat::where('trangthai_nhasanxuat', '1')->get();
+    	$nsx = NhaSanXuat::where('trangthai_nhasanxuat', '1')->paginate(5);
     	return response()->json($nsx);
     }
 
@@ -46,7 +46,7 @@ class NhaSanXuatAdminController extends Controller
 	}
 
 	function getOnce(Request $req) {
-		$data = NhaSanXuat::where('id_nhasanxuat', $req->id)->get();
+		$data = NhaSanXuat::find($req->id);
 
 		return response()->json($data);
 	}
@@ -54,25 +54,26 @@ class NhaSanXuatAdminController extends Controller
 	function postUpdate(Request $req) {
 		Validator::make($req->all(), $this->rule, $this->mess)->validate();
 		
-		NhaSanXuat::where('id_nhasanxuat', $req->id)
-			->update([
-				'ten_nhasanxuat' => $req->name,
-				'email_nhasanxuat' => $req->email,
-				'diachi_nhasanxuat' => $req->address,
-				'dienthoai_nhasanxuat' => $req->phone
-			]);
+		$nsx = NhaSanXuat::find($req->id);
+		$nsx->ten_nhasanxuat = $req->name;
+		$nsx->email_nhasanxuat = $req->email;
+		$nsx->diachi_nhasanxuat = $req->address;
+		$nsx->dienthoai_nhasanxuat = $req->phone;
+
+		$nsx->save();
 
 		return $this->getAll();
 	}
 	
 	function delete(Request $req) {		
-		NhaSanXuat::where('id_nhasanxuat', $req->id)
-			->update(['trangthai_nhasanxuat' => 0]);
+		$nsx = NhaSanXuat::find($req->id);
+		$nsx->trangthai_nhasanxuat = 0;
+		$nsx->save();
 		return response()->json(['status' => 'Xóa nhà sản xuất thành công']);
 	}
 
 	function search(Request $req) {
-		$data = NhaSanXuat::Where('ten_nhasanxuat', 'like', '%'. $req->name .'%')->get();
+		$data = NhaSanXuat::Where('ten_nhasanxuat', 'like', '%'. $req->name .'%')->paginate(5);
 
 		return response()->json($data);
 	}

@@ -34,6 +34,8 @@
 				</thead>
 				<tbody id="data"></tbody>
 			</table>
+
+			<ul class="pagination pagination-lg justify-content-center" id="pagination"></ul>
 		</div>
 		@include('../../admin/nhasanxuat/modal_insert')
 		@include('../../admin/nhasanxuat/modal_update')
